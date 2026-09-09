@@ -1,0 +1,63 @@
+// This gives you:
+//    - Prettier formatting on save for JavaScript and TypeScript.
+//    - ESLint automatic fixes on explicit save for languages configured in ESLint.
+//    - Project-local Prettier configuration.
+// TypeScript linting additionally requires TypeScript and typescript-eslint.
+{
+  // eol setting for vscode (backup in case developer not having editorconfig plugin installed)
+  "files.eol": "\n",
+  "[bat]": { "files.eol": "\r\n" },
+  "[powershell]": { "files.eol": "\r\n" },
+  // vs code Auto Saving in case developer has not set it up
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 20000,
+
+  "prettier.requireConfig": true,
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  }
+}

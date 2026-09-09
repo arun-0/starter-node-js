@@ -1,0 +1,46 @@
+# Let Git identify text versus binary files, and use LF for text files.
+* text=auto eol=lf
+
+# Windows command scripts should retain CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+
+#The effect is:
+#Git repository/index:
+#    text normalized to LF
+#
+#Working tree:
+#    ordinary text files → LF
+#    .bat and .cmd       → CRLF
+#    binary files        → unchanged
+#
+# This also makes the repository’s behaviour less dependent on each developer’s global core.autocrlf setting.
+#
+# Is LF okay on native Windows?
+# Yes, for:
+#	- Python.
+#	- VS Code.
+#	- Git Bash.
+#	- TOML/JSON/YAML.
+#	- Markdown.
+#	- Modern PowerShell scripts in ordinary UTF-8 projects.
+# Add an explicit exception later if a particular Windows-only program requires CRLF.
+#
+# Existing repository warning
+# If the repository already contains tracked files, adding .gitattributes may make Git see many line-ending changes. After adding the file, the standard normalization command is:
+#		"git add --renormalize ."
+#Then inspect before committing:
+#		"git status"
+#		"git diff --cached"
+#
+# For a brand-new repository, place .gitattributes before the first substantive commit and no special migration is needed.
+
+# Above has the effect:
+# -----------------------------------------------
+# File                             	Line ending
+# -----------------------------------------------
+# .js, .ts, .json, .md, .ps1, etc.	LF
+# .bat, .cmd                      	CRLF
+# -----------------------------------------------
+# NOTE: Modern Windows PowerShell and PowerShell 7 can execute .ps1 files using LF.
